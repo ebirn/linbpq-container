@@ -10,10 +10,12 @@ RUN  apt update && apt install -y make gcc libconfig-dev libminiupnpc-dev miniup
 # upstream repo might be slow or unavail
 # RUN git clone https://vps1.g8bpq.net/linbpq
 # github mirror
-RUN git clone https://github.com/g8bpq/linbpq.git
+RUN git clone https://github.com/g8bpq/linbpq.git /usr/local/src/linbpq
  
 
-WORKDIR linbpq
-RUN make -j
+WORKDIR /usr/local/src/linbpq
+RUN make -j && cp linbpq /usr/local/bin
 
+RUN mkdir /linbpq
+WORKDIR /linbpq
 
